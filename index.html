@@ -210,8 +210,82 @@
 
         </div>
       </div>
+      <!-- 服務 -->
+      <div class="pb-3">
+        <h2 class="my-3">服務</h2>
+        <!-- 內容 -->
+        <div class="row">
+          <div class="col-xl-4 col-md-4 col-sm-12 mb-3">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1582176604856-e824b4736522?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">巧克力雲莊 </h5>
+                <p class="card-text">利用在地食材製作各式各樣美味的產品</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-4 col-sm-12 mb-3">
+            <div class="card">
+              <img src="https://plus.unsplash.com/premium_photo-1675857197756-6b952b13a929?q=80&w=1829&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">七見櫻堂手工巧克力</h5>
+                <p class="card-text">使用北海道奶油製作，入口即化的柔軟口感</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-4 col-sm-12 mb-3">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1627647227768-705244233b56?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">櫻桃酒心巧克力</h5>
+                <p class="card-text">馥郁酒香與巧克力香，吃起來濃郁滑順</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 聯絡我們 -->
+      <div class="pb-3">
+        <h2 class="my-3">聯絡我們</h2>
+        <!-- 內容 -->
+        <form action="" id="contact-form">
+          <input type="hidden" name="contact_number">
+          <!-- 姓名 -->
+          <div class="mb-3 row">
+            <label for="inputName" class="col-sm-4 col-form-label text-center">姓名<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <input type="text" name="inputName" class="form-control" id="inputName" placeholder="請輸入您的姓名" required>
+            </div>
+          </div>
+          <!-- email -->
+          <div class="mb-3 row">
+            <label for="inputEmail" class="col-sm-4 col-form-label text-center">Email<span class="text-danger">*</span></label>
+            <div class="col-sm-8">
+              <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="請輸入您的信箱" required>
+            </div>
+          </div>
+          <!-- 建議 -->
+          <div class="mb-3 row">
+            <label for="inputTextarea" class="col-sm-4 col-form-label text-center">建議</label>
+            <div class="col-sm-8">
+              <!--刪掉 cols="50" (代表寬度)-->
+              <textarea name="message" id="inputTextarea" class="w-100 form-control" rows="10" placeholder="請輸入您的建議"></textarea>
+            </div>
+          </div>
+          <!-- 送出 -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary">送出</button>
+          </div>
+        </form>
+      </div>
+
     </div>
 
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
       integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
@@ -222,5 +296,27 @@
       integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init('IvUlFQ68ZCg9j59Xc');
+      })();
+  </script>
+    <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault();
+              // generate a five digit number for the contact_number variable
+              this.contact_number.value = Math.random() * 100000 | 0;
+              // these IDs from the previous steps
+              emailjs.sendForm('service_660g29s', 'template_ppglphp', this)
+                  .then(function() {
+                      console.log('SUCCESS!');
+                  }, function(error) {
+                      console.log('FAILED...', error);
+                  });
+          });
+      }
+  </script>
   </body>
 </html>
